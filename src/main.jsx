@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import App from './App.jsx'
 import Gate from './features/gate/Gate.jsx'
+import './index.css'
 
+// helper for manual reset from console
 window.clearGate = () => {
   localStorage.removeItem('gate_ok');
   localStorage.removeItem('gate_name');

@@ -5,7 +5,7 @@ export default function LandingGate({ onSuccess }) {
   const [email, setEmail] = useState(localStorage.getItem("gate_email") || "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const endpoint = import.meta.env.VITE_FORM_ENDPOINT;
+  const endpoint = import.meta.env.VITE_FORM_ENDPOINT || '';
 
   async function onSubmit(e) {
     e.preventDefault();
