@@ -70,7 +70,7 @@ function HomePage() {
                   Request Demo
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button asChild size="lg" variant="secondary">
+                <Button asChild variant="secondary" size="lg">
                   <Link to="/downloads">Download Brochure</Link>
                 </Button>
               </div>
