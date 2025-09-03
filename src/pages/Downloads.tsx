@@ -96,14 +96,17 @@ export default function DownloadsPage() {
       {/* Sections */}
       <div className="space-y-10">
         {sections.map((section) => {
-          const id =
-            section.heading.toLowerCase() === "technical specifications"
-              ? "technical-specifications"
-              : slug(section.heading);
+          const isTechSpecs = section.heading === "Technical Specifications";
+          const headingId = isTechSpecs ? "specs" : slug(section.heading);
 
           return (
-            <section key={section.heading} id={id}>
-              <h2 className="mb-4 text-2xl font-semibold">{section.heading}</h2>
+            <section key={section.heading}>
+              <h2
+                id={headingId}
+                className={`mb-4 text-2xl font-semibold${isTechSpecs ? " scroll-mt-28" : ""}`}
+              >
+                {section.heading}
+              </h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {section.items.map((item, idx) => (
                   <article
