@@ -13,6 +13,8 @@ import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
 import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
+import { InfoRequestProvider, useInfoRequest } from './features/info-request/InfoRequestContext';
+import InfoRequestModal from './features/info-request/InfoRequestModal';
 import { 
   Wind, 
   DollarSign, 
@@ -38,6 +40,7 @@ import heroFiltersImage from './assets/hero_filters_original.jpeg';
 
 function HomePage() {
   const [selectedApplication, setSelectedApplication] = useState(null);
+  const { open } = useInfoRequest();
 
   return (
     <>
@@ -67,8 +70,8 @@ function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Request Demo
+                <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={open}>
+                  Request More Info
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button asChild variant="secondary" size="lg">
@@ -574,20 +577,23 @@ function Footer() {
 
 function App() {
   return (
-    <Router>
-      <ScrollHandler />
-      <div className="min-h-screen bg-background">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/benefits" element={<Benefits />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/downloads" element={<DownloadsPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <InfoRequestProvider>
+      <Router>
+        <ScrollHandler />
+        <div className="min-h-screen bg-background">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/benefits" element={<Benefits />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+          </Routes>
+          <Footer />
+        </div>
+        <InfoRequestModal />
+      </Router>
+    </InfoRequestProvider>
   );
 }
 
