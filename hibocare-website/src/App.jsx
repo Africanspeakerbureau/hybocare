@@ -81,7 +81,7 @@ function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <HeroCTA />
                 <Button asChild variant="secondary" size="lg">
-                  <Link to="/downloads#technical-specifications">View Technical Specifications</Link>
+                  <Link to="/downloads#specs">View Technical Specifications</Link>
                 </Button>
               </div>
               <div className="flex items-center space-x-8 text-sm text-muted-foreground">
@@ -315,10 +315,12 @@ function HomePage() {
                 </div>
               </div>
               
-              <Button className="bg-primary hover:bg-primary/90">
-                View Technical Specifications
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link to="/downloads#specs">
+                <Button className="bg-primary hover:bg-primary/90">
+                  View Technical Specifications
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
             
             <div className="relative">
@@ -390,17 +392,8 @@ function HomePage() {
               Ready to Transform Your Air Quality?
             </h2>
             <p className="text-xl opacity-90">
-              Join leading organizations worldwide who trust HiboScreen for cleaner air and lower costs
+              Join leading organizations worldwide who trust HiboScreen for cleaner air and lower costs. Get in touch—speak with our technical experts about your specific requirements.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-                Schedule Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Download Case Studies
-              </Button>
-            </div>
           </div>
         </div>
       </section>
@@ -408,14 +401,9 @@ function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Speak with our technical experts about your specific requirements
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="sr-only">Get in Touch</h2>
+          <p className="sr-only">Speak with our technical experts about your specific requirements</p>
+          <div className="mt-8 grid md:grid-cols-3 gap-8">
             <Card className="text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
