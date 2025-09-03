@@ -70,7 +70,7 @@ function HomePage() {
                   Request Demo
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="secondary">
                   <Link to="/downloads">Download Brochure</Link>
                 </Button>
               </div>
@@ -494,13 +494,21 @@ function Header() {
           >
             Benefits
           </Link>
-          <Link 
-            to="/technology" 
+          <Link
+            to="/technology"
             className={`text-sm font-medium hover:text-primary transition-colors ${
               location.pathname === '/technology' ? 'text-primary' : ''
             }`}
           >
             Technology
+          </Link>
+          <Link
+            to="/downloads"
+            className={`text-sm font-medium hover:text-primary transition-colors ${
+              location.pathname === '/downloads' ? 'text-primary' : ''
+            }`}
+          >
+            Downloads
           </Link>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
         </nav>
