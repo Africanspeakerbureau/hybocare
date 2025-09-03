@@ -7,7 +7,7 @@ import { Badge } from './components/ui/badge';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
-import Downloads from './pages/Downloads';
+import DownloadsPage from './pages/Downloads';
 import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
@@ -583,7 +583,7 @@ function App() {
           <Route path="/features" element={<Features />} />
           <Route path="/benefits" element={<Benefits />} />
           <Route path="/technology" element={<Technology />} />
-          <Route path="/downloads" element={<Downloads />} />
+          <Route path="/downloads" element={<DownloadsPage />} />
         </Routes>
         <Footer />
       </div>

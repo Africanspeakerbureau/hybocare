@@ -22,7 +22,7 @@ const typeOptions = [
   { value: 'maintenance', label: 'Maintenance' },
 ];
 
-export default function Downloads() {
+export default function DownloadsPage() {
   const [search, setSearch] = useState('');
   const [industries, setIndustries] = useState([]);
   const [types, setTypes] = useState([]);
