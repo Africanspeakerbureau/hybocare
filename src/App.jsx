@@ -16,10 +16,10 @@ import {
   Building2, 
   Heart, 
   Leaf, 
-  CheckCircle, 
+  CheckCircle,
   ArrowRight,
   Star,
-  Users,
+  Cannabis,
   TrendingDown,
   Award,
   Phone,
@@ -217,7 +217,13 @@ function HomePage() {
             {[
               { icon: Building2, title: "Data Centers", desc: "Optimal for fan wall installations with minimal pressure drop", key: "data-centers" },
               { icon: Heart, title: "Hospitals", desc: "Superior pathogen control for patient safety", key: "hospitals" },
-              { icon: Users, title: "Call Centers", desc: "Healthier work environment, reduced absenteeism", key: "call-centers" },
+              {
+                icon: Cannabis,
+                title: "Grow Facilities & Greenhouses",
+                desc: "Healthier plants, eliminate pathogens, steadier yields, clean air",
+                key: "call-centers",
+                href: "https://drive.google.com/file/d/1L6Z5SYMTqh-w-vUJ0pjwXJeOfEI4dqbB/view?usp=share_link"
+              },
               { icon: Building2, title: "Commercial Buildings", desc: "ESG compliance and energy efficiency", key: "commercial-buildings" }
             ].map((item, index) => (
               <Card 
@@ -234,10 +240,23 @@ function HomePage() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                   <div className="mt-4">
-                    <Button variant="outline" size="sm">
-                      Learn More
-                      <ArrowRight className="ml-2 h-3 w-3" />
-                    </Button>
+                    {item.href ? (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Learn More
+                          <ArrowRight className="ml-2 h-3 w-3" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" size="sm">
+                        Learn More
+                        <ArrowRight className="ml-2 h-3 w-3" />
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
