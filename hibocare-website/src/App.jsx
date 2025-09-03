@@ -7,6 +7,7 @@ import { Badge } from './components/ui/badge';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
+import DownloadsPage from './pages/Downloads';
 import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
@@ -69,8 +70,8 @@ function HomePage() {
                   Request Demo
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline">
-                  Download Brochure
+                <Button asChild variant="secondary" size="lg">
+                  <Link to="/downloads">Download Brochure</Link>
                 </Button>
               </div>
               <div className="flex items-center space-x-8 text-sm text-muted-foreground">
@@ -493,13 +494,21 @@ function Header() {
           >
             Benefits
           </Link>
-          <Link 
-            to="/technology" 
+          <Link
+            to="/technology"
             className={`text-sm font-medium hover:text-primary transition-colors ${
               location.pathname === '/technology' ? 'text-primary' : ''
             }`}
           >
             Technology
+          </Link>
+          <Link
+            to="/downloads"
+            className={`text-sm font-medium hover:text-primary transition-colors ${
+              location.pathname === '/downloads' ? 'text-primary' : ''
+            }`}
+          >
+            Downloads
           </Link>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
         </nav>
@@ -574,6 +583,7 @@ function App() {
           <Route path="/features" element={<Features />} />
           <Route path="/benefits" element={<Benefits />} />
           <Route path="/technology" element={<Technology />} />
+          <Route path="/downloads" element={<DownloadsPage />} />
         </Routes>
         <Footer />
       </div>
