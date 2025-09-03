@@ -13,6 +13,8 @@ import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
 import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
+import { InfoRequestProvider, useInfoRequest } from "./features/info-request/InfoRequestContext";
+import InfoRequestModal from "./features/info-request/InfoRequestModal";
 import { 
   Wind, 
   DollarSign, 
@@ -35,6 +37,16 @@ import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
 import lifestyleImage from './assets/HSlifestylephoto.jpg';
 import heroFiltersImage from './assets/hero_filters_original.jpeg';
+
+function HeroCTA() {
+  const { openModal } = useInfoRequest();
+  return (
+    <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={openModal}>
+      Request More Info
+      <ArrowRight className="ml-2 h-4 w-4" />
+    </Button>
+  );
+}
 
 function HomePage() {
   const [selectedApplication, setSelectedApplication] = useState(null);
@@ -67,10 +79,7 @@ function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Request Demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <HeroCTA />
                 <Button asChild variant="secondary" size="lg">
                   <Link to="/downloads#technical-specifications">View Technical Specifications</Link>
                 </Button>
@@ -468,7 +477,8 @@ function HomePage() {
 
 function Header() {
   const location = useLocation();
-  
+  const { openModal } = useInfoRequest();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -479,16 +489,16 @@ function Header() {
           <span className="text-xl font-bold text-primary">HiboCare</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
-          <Link 
-            to="/features" 
+          <Link
+            to="/features"
             className={`text-sm font-medium hover:text-primary transition-colors ${
               location.pathname === '/features' ? 'text-primary' : ''
             }`}
           >
             Features
           </Link>
-          <Link 
-            to="/benefits" 
+          <Link
+            to="/benefits"
             className={`text-sm font-medium hover:text-primary transition-colors ${
               location.pathname === '/benefits' ? 'text-primary' : ''
             }`}
@@ -513,7 +523,12 @@ function Header() {
           </Link>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
         </nav>
-        {/* Removed quote button */}
+        <button
+          onClick={openModal}
+          className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+        >
+          Request More Info
+        </button>
       </div>
     </header>
   );
@@ -591,5 +606,12 @@ function App() {
   );
 }
 
-export default App;
+export default function AppRoot() {
+  return (
+    <InfoRequestProvider>
+      <App />
+      <InfoRequestModal />
+    </InfoRequestProvider>
+  );
+}
 
