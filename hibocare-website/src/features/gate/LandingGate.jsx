@@ -7,6 +7,9 @@ export default function LandingGate({ onSuccess }) {
   const [submitted, setSubmitted] = useState(false)
   const [touched, setTouched] = useState({ first: false, last: false, email: false })
 
+  const days = Number(import.meta.env.VITE_GATE_TTL_DAYS ?? 30)
+  const ttlMs = days * 864e5
+
   const firstNameError = firstName.trim().length >= 2 ? '' : 'Please enter your first name'
   const lastNameError = lastName.trim().length >= 2 ? '' : 'Please enter your last name'
   const emailError = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -38,7 +41,7 @@ export default function LandingGate({ onSuccess }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         })
-      } catch (_) {
+      } catch {
         // ignore network failure
       }
     }
@@ -46,6 +49,7 @@ export default function LandingGate({ onSuccess }) {
     localStorage.setItem('gate_ok', '1')
     localStorage.setItem('gate_name', `${firstName} ${lastName}`.trim())
     localStorage.setItem('gate_email', email)
+    localStorage.setItem('gate_until', String(Date.now() + ttlMs))
 
     if (onSuccess) onSuccess()
     else location.reload()
@@ -59,9 +63,9 @@ export default function LandingGate({ onSuccess }) {
         onSubmit={handleSubmit}
         style={{ width: '100%', maxWidth: 420, background: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}
       >
-        <h1 style={{ marginBottom: '0.5rem' }}>Welcome to HiboCare</h1>
+        <h1 style={{ marginBottom: '0.5rem' }}>Welcome to HiboScreen</h1>
         <p style={{ marginBottom: '1rem', color: '#555' }}>
-          To visit the HiboScreen website, please enter your name and email address.
+          Please enter your details to continue
         </p>
         <div style={{ marginBottom: '1rem' }}>
           <input
@@ -107,10 +111,10 @@ export default function LandingGate({ onSuccess }) {
           disabled={!isValid}
           style={{ width: '100%', padding: '0.75rem', cursor: isValid ? 'pointer' : 'not-allowed' }}
         >
-          Enter
+          Enter site
         </button>
         <p style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#666' }}>
-          We’ll only use your details to follow up on your interest in HiboScreen.
+          We’ll only use this to contact you about HiboScreen. No spam.
         </p>
       </form>
     </div>
