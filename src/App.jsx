@@ -4,10 +4,13 @@ import './App.css';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
-import ApplicationDetails from './components/ApplicationDetails';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
+import DataCentersModal from './features/industries/DataCentersModal';
+import HospitalsModal from './features/industries/HospitalsModal';
+import GreenhousesModal from './features/industries/GreenhousesModal';
+import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
 import { 
   Wind, 
   DollarSign, 
@@ -217,19 +220,12 @@ function HomePage() {
             {[
               { icon: Building2, title: "Data Centers", desc: "Optimal for fan wall installations with minimal pressure drop", key: "data-centers" },
               { icon: Heart, title: "Hospitals", desc: "Superior pathogen control for patient safety", key: "hospitals" },
-              {
-                icon: Cannabis,
-                title: "Grow Facilities & Greenhouses",
-                desc: "Healthier plants, eliminate pathogens, steadier yields, clean air",
-                key: "call-centers",
-                href: "https://drive.google.com/file/d/1L6Z5SYMTqh-w-vUJ0pjwXJeOfEI4dqbB/view?usp=share_link"
-              },
+              { icon: Cannabis, title: "Grow Facilities & Greenhouses", desc: "Cleaner air for higher yields and healthier crops", key: "greenhouses" },
               { icon: Building2, title: "Commercial Buildings", desc: "ESG compliance and energy efficiency", key: "commercial-buildings" }
             ].map((item, index) => (
-              <Card 
-                key={index} 
-                className="feature-card text-center cursor-pointer hover:shadow-lg transition-all duration-300" 
-                onClick={() => setSelectedApplication(item.key)}
+              <Card
+                key={index}
+                className="feature-card text-center hover:shadow-lg transition-all duration-300"
               >
                 <CardHeader>
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -240,23 +236,14 @@ function HomePage() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                   <div className="mt-4">
-                    {item.href ? (
-                      <Button variant="outline" size="sm" asChild>
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Learn More
-                          <ArrowRight className="ml-2 h-3 w-3" />
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button variant="outline" size="sm">
-                        Learn More
-                        <ArrowRight className="ml-2 h-3 w-3" />
-                      </Button>
-                    )}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedApplication(item.key)}
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-3 w-3" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -461,11 +448,17 @@ function HomePage() {
       </section>
 
       {/* Application Details Modal */}
-      {selectedApplication && (
-        <ApplicationDetails 
-          applicationKey={selectedApplication} 
-          onClose={() => setSelectedApplication(null)} 
-        />
+      {selectedApplication === 'data-centers' && (
+        <DataCentersModal onClose={() => setSelectedApplication(null)} />
+      )}
+      {selectedApplication === 'hospitals' && (
+        <HospitalsModal onClose={() => setSelectedApplication(null)} />
+      )}
+      {selectedApplication === 'greenhouses' && (
+        <GreenhousesModal onClose={() => setSelectedApplication(null)} />
+      )}
+      {selectedApplication === 'commercial-buildings' && (
+        <CommercialBuildingsModal onClose={() => setSelectedApplication(null)} />
       )}
     </>
   );
