@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const slug = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 type Item = {
   title: string;
   blurb?: string;
@@ -92,45 +95,52 @@ export default function DownloadsPage() {
 
       {/* Sections */}
       <div className="space-y-10">
-        {sections.map((section) => (
-          <section key={section.heading}>
-            <h2 className="mb-4 text-2xl font-semibold">{section.heading}</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {section.items.map((item, idx) => (
-                <article
-                  key={`${section.heading}-${idx}`}
-                  className="rounded-2xl border bg-background p-5 shadow-sm transition hover:shadow"
-                >
-                  <h3 className="text-base font-semibold">{item.title}</h3>
-                  {item.blurb && (
-                    <p className="mt-2 text-sm text-muted-foreground">{item.blurb}</p>
-                  )}
+        {sections.map((section) => {
+          const id =
+            section.heading.toLowerCase() === "technical specifications"
+              ? "technical-specifications"
+              : slug(section.heading);
 
-                  <div className="mt-4">
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
-                      >
-                        Download PDF
-                      </a>
-                    ) : (
-                      <button
-                        disabled
-                        title="Coming soon"
-                        className="inline-flex cursor-not-allowed items-center rounded-lg bg-muted px-3 py-2 text-sm text-muted-foreground"
-                      >
-                        Coming soon
-                      </button>
+          return (
+            <section key={section.heading} id={id}>
+              <h2 className="mb-4 text-2xl font-semibold">{section.heading}</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {section.items.map((item, idx) => (
+                  <article
+                    key={`${section.heading}-${idx}`}
+                    className="rounded-2xl border bg-background p-5 shadow-sm transition hover:shadow"
+                  >
+                    <h3 className="text-base font-semibold">{item.title}</h3>
+                    {item.blurb && (
+                      <p className="mt-2 text-sm text-muted-foreground">{item.blurb}</p>
                     )}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
+
+                    <div className="mt-4">
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
+                        >
+                          Download PDF
+                        </a>
+                      ) : (
+                        <button
+                          disabled
+                          title="Coming soon"
+                          className="inline-flex cursor-not-allowed items-center rounded-lg bg-muted px-3 py-2 text-sm text-muted-foreground"
+                        >
+                          Coming soon
+                        </button>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </main>
   );

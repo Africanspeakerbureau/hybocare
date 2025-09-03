@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import ScrollHandler from "@/components/ScrollHandler";
 import './App.css';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
@@ -71,7 +72,7 @@ function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button asChild variant="secondary" size="lg">
-                  <Link to="/downloads">Download Brochure</Link>
+                  <Link to="/downloads#technical-specifications">View Technical Specifications</Link>
                 </Button>
               </div>
               <div className="flex items-center space-x-8 text-sm text-muted-foreground">
@@ -512,9 +513,7 @@ function Header() {
           </Link>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
         </nav>
-        <Button className="bg-primary hover:bg-primary/90">
-          Get Quote
-        </Button>
+        {/* Removed quote button */}
       </div>
     </header>
   );
@@ -576,6 +575,7 @@ function Footer() {
 function App() {
   return (
     <Router>
+      <ScrollHandler />
       <div className="min-h-screen bg-background">
         <Header />
         <Routes>
