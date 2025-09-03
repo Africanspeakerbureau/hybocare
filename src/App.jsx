@@ -13,8 +13,8 @@ import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
 import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
-import { InfoRequestProvider, useInfoRequest } from "@/features/info/InfoRequestContext";
-import InfoRequestModal from "@/features/info/InfoRequestModal";
+import { InfoRequestProvider, useInfoRequest } from "./features/info-request/InfoRequestContext";
+import InfoRequestModal from "./features/info-request/InfoRequestModal";
 import { 
   Wind, 
   DollarSign, 
@@ -38,9 +38,18 @@ import productImage from './assets/productshotH600.png';
 import lifestyleImage from './assets/HSlifestylephoto.jpg';
 import heroFiltersImage from './assets/hero_filters_original.jpeg';
 
+function HeroCTA() {
+  const { openModal } = useInfoRequest();
+  return (
+    <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={openModal}>
+      Request More Info
+      <ArrowRight className="ml-2 h-4 w-4" />
+    </Button>
+  );
+}
+
 function HomePage() {
   const [selectedApplication, setSelectedApplication] = useState(null);
-  const { open } = useInfoRequest();
 
   return (
     <>
@@ -70,14 +79,7 @@ function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90"
-                  onClick={open}
-                >
-                  Request More Info
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <HeroCTA />
                 <Button asChild variant="secondary" size="lg">
                   <Link to="/downloads#technical-specifications">View Technical Specifications</Link>
                 </Button>
@@ -475,8 +477,8 @@ function HomePage() {
 
 function Header() {
   const location = useLocation();
-  const { open } = useInfoRequest();
-  
+  const { openModal } = useInfoRequest();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -522,10 +524,7 @@ function Header() {
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
         </nav>
         <button
-          onClick={(e) => {
-            e.preventDefault();
-            open();
-          }}
+          onClick={openModal}
           className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
         >
           Request More Info
@@ -590,25 +589,29 @@ function Footer() {
 
 function App() {
   return (
-    <InfoRequestProvider>
-      <Router>
-        <ScrollHandler />
-        <div className="min-h-screen bg-background">
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="/benefits" element={<Benefits />} />
-            <Route path="/technology" element={<Technology />} />
-            <Route path="/downloads" element={<DownloadsPage />} />
-          </Routes>
-          <Footer />
-        </div>
-        <InfoRequestModal />
-      </Router>
-    </InfoRequestProvider>
+    <Router>
+      <ScrollHandler />
+      <div className="min-h-screen bg-background">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/benefits" element={<Benefits />} />
+          <Route path="/technology" element={<Technology />} />
+          <Route path="/downloads" element={<DownloadsPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default function AppRoot() {
+  return (
+    <InfoRequestProvider>
+      <App />
+      <InfoRequestModal />
+    </InfoRequestProvider>
+  );
+}
 
