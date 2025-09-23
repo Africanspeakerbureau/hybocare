@@ -36,8 +36,6 @@ import {
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
-import lifestyleImage from './assets/HSlifestylephoto.jpg';
-import heroFiltersImage from './assets/hero_filters_original.jpeg';
 
 function HeroCTA() {
   const { openModal } = useInfoRequest();

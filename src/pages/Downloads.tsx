@@ -92,7 +92,7 @@ export default function DownloadsPage() {
         <h1 className="text-4xl font-bold tracking-tight">Downloads</h1>
         <p className="mt-3 text-lg text-muted-foreground">
           Specs, brochures, and reference docs for HiboScreen. Choose a resource below.
-          Brochures with links open in our internal viewer; other items are coming soon.
+          Linked brochures open inside our on-site viewer with a download option; other items are coming soon.
         </p>
       </header>
 
@@ -111,36 +111,42 @@ export default function DownloadsPage() {
                 {section.heading}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {section.items.map((item, idx) => (
-                  <article
-                    key={`${section.heading}-${idx}`}
-                    className="rounded-2xl border bg-background p-5 shadow-sm transition hover:shadow"
-                  >
-                    <h3 className="text-base font-semibold">{item.title}</h3>
-                    {item.blurb && (
-                      <p className="mt-2 text-sm text-muted-foreground">{item.blurb}</p>
-                    )}
+                {section.items.map((item, idx) => {
+                  const linkLabel = item.title.toLowerCase().includes("brochure")
+                    ? "Open brochure"
+                    : "View document";
 
-                    <div className="mt-4">
-                      {item.href ? (
-                        <Link
-                          to={makeViewerPath(item.title, item.href)}
-                          className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
-                        >
-                          Download PDF
-                        </Link>
-                      ) : (
-                        <button
-                          disabled
-                          title="Coming soon"
-                          className="inline-flex cursor-not-allowed items-center rounded-lg bg-muted px-3 py-2 text-sm text-muted-foreground"
-                        >
-                          Coming soon
-                        </button>
+                  return (
+                    <article
+                      key={`${section.heading}-${idx}`}
+                      className="rounded-2xl border bg-background p-5 shadow-sm transition hover:shadow"
+                    >
+                      <h3 className="text-base font-semibold">{item.title}</h3>
+                      {item.blurb && (
+                        <p className="mt-2 text-sm text-muted-foreground">{item.blurb}</p>
                       )}
-                    </div>
-                  </article>
-                ))}
+
+                      <div className="mt-4">
+                        {item.href ? (
+                          <Link
+                            to={makeViewerPath(item.title, item.href)}
+                            className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
+                          >
+                            {linkLabel}
+                          </Link>
+                        ) : (
+                          <button
+                            disabled
+                            title="Coming soon"
+                            className="inline-flex cursor-not-allowed items-center rounded-lg bg-muted px-3 py-2 text-sm text-muted-foreground"
+                          >
+                            Coming soon
+                          </button>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </section>
           );
