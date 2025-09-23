@@ -9,6 +9,7 @@ import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
 import DownloadsPage from './pages/Downloads';
+import DocViewerPage from './pages/DocViewer';
 import DataCentersModal from './features/industries/DataCentersModal';
 import HospitalsModal from './features/industries/HospitalsModal';
 import GreenhousesModal from './features/industries/GreenhousesModal';
@@ -35,8 +36,6 @@ import {
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
-import lifestyleImage from './assets/HSlifestylephoto.jpg';
-import heroFiltersImage from './assets/hero_filters_original.jpeg';
 
 function HeroCTA() {
   const { openModal } = useInfoRequest();
@@ -587,6 +586,7 @@ function App() {
           <Route path="/benefits" element={<Benefits />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/downloads" element={<DownloadsPage />} />
+          <Route path="/docs/:slug" element={<DocViewerPage />} />
         </Routes>
         <Footer />
       </div>
