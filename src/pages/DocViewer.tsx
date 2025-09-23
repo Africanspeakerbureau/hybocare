@@ -1,5 +1,13 @@
 import { Link, useSearchParams } from "react-router-dom";
 
+function safeDecode(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 function normalizePreview(raw: string): string {
   try {
     const u = new URL(raw);
@@ -60,13 +68,15 @@ function makeDownload(raw: string): string {
 
 export default function DocViewerPage() {
   const [searchParams] = useSearchParams();
-  const raw = searchParams.get("u");
+  const rawParam = searchParams.get("u");
 
-  if (!raw) {
+  if (!rawParam) {
     return <div className="mx-auto max-w-5xl p-6">Missing document URL.</div>;
   }
 
-  const title = searchParams.get("title") ?? "Document";
+  const raw = safeDecode(rawParam);
+  const titleParam = searchParams.get("title");
+  const title = titleParam ? safeDecode(titleParam) : "Document";
   const preview = normalizePreview(raw);
   const downloadUrl = makeDownload(raw);
 
