@@ -81,6 +81,9 @@ const sections: Section[] = [
   },
 ];
 
+const makeViewerPath = (itemTitle: string, url: string) =>
+  `/docs/${slug(itemTitle)}?u=${encodeURIComponent(url)}&title=${encodeURIComponent(itemTitle)}`;
+
 export default function DownloadsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
@@ -89,7 +92,7 @@ export default function DownloadsPage() {
         <h1 className="text-4xl font-bold tracking-tight">Downloads</h1>
         <p className="mt-3 text-lg text-muted-foreground">
           Specs, brochures, and reference docs for HiboScreen. Choose a resource below.
-          Brochures with links open in a new tab; other items are coming soon.
+          Brochures with links open in an internal viewer; other items are coming soon.
         </p>
       </header>
 
@@ -120,14 +123,12 @@ export default function DownloadsPage() {
 
                     <div className="mt-4">
                       {item.href ? (
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noreferrer"
+                        <Link
+                          to={makeViewerPath(item.title, item.href)}
                           className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
                         >
-                          Download PDF
-                        </a>
+                          View PDF
+                        </Link>
                       ) : (
                         <button
                           disabled
