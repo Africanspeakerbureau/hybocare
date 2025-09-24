@@ -31,6 +31,7 @@ export default function GreenhousesModal(props) {
         'Research growth chambers'
       ]}
       downloadLink="https://drive.google.com/file/d/1L6Z5SYMTqh-w-vUJ0pjwXJeOfEI4dqbB/view?usp=sharing"
+      downloadTitle="Greenhouses & Grow Facilities – Brochure"
       {...props}
     />
   );

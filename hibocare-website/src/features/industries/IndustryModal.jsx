@@ -1,9 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 
-export default function IndustryModal({ icon: Icon, title, subtitle, overview, keyBenefits, technicalSpecs, caseStudy, applications, onClose, downloadLink }) {
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+const makeViewerPath = (title, url) =>
+  `/docs/${slugify(title)}?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+
+export default function IndustryModal(props) {
+  const {
+    icon,
+    title,
+    subtitle,
+    overview,
+    keyBenefits,
+    technicalSpecs,
+    caseStudy,
+    applications,
+    onClose,
+    downloadLink,
+    downloadTitle,
+  } = props;
+  const IconComponent = icon;
+  const documentTitle = downloadTitle ?? `${title} — Document`;
+  const viewerLink = downloadLink ? makeViewerPath(documentTitle, downloadLink) : null;
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
@@ -18,7 +44,7 @@ export default function IndustryModal({ icon: Icon, title, subtitle, overview, k
           <div className="flex items-start justify-between gap-4 flex-col sm:flex-row mb-6">
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Icon className="h-8 w-8 text-primary" />
+                <IconComponent className="h-8 w-8 text-primary" />
               </div>
               <div className="space-y-1">
                 <h2 className="text-2xl font-bold">{title}</h2>
@@ -32,11 +58,11 @@ export default function IndustryModal({ icon: Icon, title, subtitle, overview, k
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              {downloadLink ? (
+              {viewerLink ? (
                 <Button variant="outline" asChild>
-                  <a href={downloadLink} target="_blank" rel="noopener noreferrer">
+                  <Link to={viewerLink}>
                     Download Technical Specs
-                  </a>
+                  </Link>
                 </Button>
               ) : (
                 <Button variant="outline" disabled title="Specs coming soon">
@@ -109,4 +135,3 @@ export default function IndustryModal({ icon: Icon, title, subtitle, overview, k
     </div>
   );
 }
-
