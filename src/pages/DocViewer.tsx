@@ -144,14 +144,12 @@ export default function DocViewerPage() {
   }, [derivedTitle]);
 
   return (
-    <main className="mx-auto max-w-6xl p-6">
+    <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <h1 className="text-2xl font-semibold">{derivedTitle}</h1>
       <div className="my-4 flex flex-wrap gap-3">
         <a
           href={downloadUrl}
           className="inline-flex items-center rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
-          target="_blank"
-          rel="noreferrer"
         >
           Download PDF
         </a>
