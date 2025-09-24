@@ -130,7 +130,10 @@ export default function DownloadsPage() {
                         {item.href ? (
                           <Link
                             to={makeViewerPath(item.title, item.href)}
-                            className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
+                            className={[
+                              "inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground",
+                              "hover:opacity-90",
+                            ].join(" ")}
                           >
                             {linkLabel}
                           </Link>

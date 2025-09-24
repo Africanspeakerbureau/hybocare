@@ -31,6 +31,7 @@ export default function DataCentersModal(props) {
         'Edge computing locations'
       ]}
       downloadLink="https://drive.google.com/file/d/1Vpb7o5ujuCzPezfRWICpel5YV2a53cO2/view?usp=sharing"
+      downloadTitle="Data Centers – Brochure"
       {...props}
     />
   );
