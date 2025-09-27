@@ -101,9 +101,9 @@ function HomePage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100/50 to-green-100/50 rounded-3xl blur-3xl"></div>
               <div className="relative floating-animation">
-                <img 
-                  src={filterImage} 
-                  alt="HiboCare Filter with Airflow Transformation" 
+                <img
+                  src={filterImage}
+                  alt="HiboScreen Filter with Airflow Transformation"
                   className="w-full max-w-lg mx-auto drop-shadow-2xl rounded-2xl"
                 />
               </div>
@@ -473,7 +473,7 @@ function Header() {
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <Wind className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold text-primary">HiboCare</span>
+          <span className="text-xl font-bold text-primary">HiboScreen</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           <Link
@@ -531,7 +531,7 @@ function Footer() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Wind className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">HiboCare</span>
+              <span className="text-xl font-bold">HiboScreen</span>
             </div>
             <p className="text-gray-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
@@ -567,7 +567,7 @@ function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2025 HiboCare. All rights reserved.</p>
+          <p>&copy; 2025 HiboScreen. All rights reserved.</p>
         </div>
       </div>
     </footer>
