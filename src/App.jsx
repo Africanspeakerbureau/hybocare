@@ -16,14 +16,14 @@ import GreenhousesModal from './features/industries/GreenhousesModal';
 import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
 import { InfoRequestProvider, useInfoRequest } from "./features/info-request/InfoRequestContext";
 import InfoRequestModal from "./features/info-request/InfoRequestModal";
-import { 
-  Wind, 
-  DollarSign, 
-  Shield, 
-  Zap, 
-  Building2, 
-  Heart, 
-  Leaf, 
+import {
+  Wind,
+  DollarSign,
+  Shield,
+  Zap,
+  Building2,
+  Heart,
+  Leaf,
   CheckCircle,
   ArrowRight,
   Star,
@@ -32,7 +32,8 @@ import {
   Award,
   Phone,
   Mail,
-  MapPin
+  MapPin,
+  User
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
@@ -49,6 +50,32 @@ function HeroCTA() {
 
 function HomePage() {
   const [selectedApplication, setSelectedApplication] = useState(null);
+  const contacts = [
+    {
+      name: 'Leslie Smiedt',
+      email: 'lessmiedt@mac.com',
+      phone: '+1 (805) 300 0966',
+      tel: '+18053000966'
+    },
+    {
+      name: 'Andy Herbst',
+      email: 'andyagave@yahoo.com',
+      phone: '+1 (209) 222-1122',
+      tel: '+12092221122'
+    },
+    {
+      name: 'Christian Herbst',
+      email: 'cherbst73@gmail.com',
+      phone: '+1 (209) 262-0289',
+      tel: '+12092620289'
+    },
+    {
+      name: 'Sean Herbst',
+      email: 'rongz.oner@gmail.com',
+      phone: '+1 (442) 822-5125',
+      tel: '+14428225125'
+    }
+  ];
 
   return (
     <>
@@ -402,33 +429,36 @@ function HomePage() {
         <div className="container mx-auto px-4">
           <h2 className="sr-only">Get in Touch</h2>
           <p className="sr-only">Speak with our technical experts about your specific requirements</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Phone</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                <p className="text-sm text-muted-foreground mt-2">Mon-Fri 9AM-6PM EST</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Email</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">info@hibocare.com</p>
-                <p className="text-sm text-muted-foreground mt-2">Response within 24 hours</p>
-              </CardContent>
-            </Card>
-            
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+            {contacts.map((contact) => (
+              <Card key={contact.email} className="text-center">
+                <CardHeader className="space-y-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+                    <User className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>{contact.name}</CardTitle>
+                  <CardDescription className="flex flex-col gap-2 text-muted-foreground">
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="flex items-center justify-center gap-2 hover:text-primary transition-colors"
+                    >
+                      <Mail className="h-4 w-4" />
+                      <span>{contact.email}</span>
+                    </a>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href={`tel:${contact.tel}`}
+                    className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Phone className="h-4 w-4" />
+                    <span>{contact.phone}</span>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+
             <Card className="text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
