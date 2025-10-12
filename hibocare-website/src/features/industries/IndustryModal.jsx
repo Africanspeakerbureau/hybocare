@@ -3,15 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
 import { CheckCircle, ArrowRight } from 'lucide-react';
-
-const slugify = (value) =>
-  value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-
-const makeViewerPath = (title, url) =>
-  `/docs/${slugify(title)}?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+import { useInfoRequest } from '../info-request/InfoRequestContext';
 
 export default function IndustryModal(props) {
   const {
@@ -28,8 +20,11 @@ export default function IndustryModal(props) {
     downloadTitle,
   } = props;
   const IconComponent = icon;
-  const documentTitle = downloadTitle ?? `${title} — Document`;
-  const viewerLink = downloadLink ? makeViewerPath(documentTitle, downloadLink) : null;
+  const viewerLink = downloadLink ?? null;
+  const { openModal } = useInfoRequest();
+  const linkLabel = downloadTitle?.toLowerCase().includes('brochure')
+    ? 'Open brochure'
+    : 'Download Technical Specs';
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
@@ -61,12 +56,12 @@ export default function IndustryModal(props) {
               {viewerLink ? (
                 <Button variant="outline" asChild>
                   <Link to={viewerLink}>
-                    Download Technical Specs
+                    {linkLabel}
                   </Link>
                 </Button>
               ) : (
-                <Button variant="outline" disabled title="Specs coming soon">
-                  Download Technical Specs
+                <Button variant="outline" onClick={openModal} type="button">
+                  Request More Info
                 </Button>
               )}
             </div>
