@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { docLink } from "@/lib/docLink";
+import { useInfoRequest } from "@/features/info-request/InfoRequestContext";
 
 const slug = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -7,7 +9,8 @@ const slug = (s: string) =>
 type Item = {
   title: string;
   blurb?: string;
-  href?: string; // open if present, else show "Coming soon"
+  href?: string;
+  requestInfo?: boolean;
 };
 
 type Section = {
@@ -23,21 +26,35 @@ const sections: Section[] = [
         title: "Data Centers – Brochure",
         blurb:
           "Cleaner coils, lower pressure drop, and up to 30% cooling savings for fan-wall installs.",
-        href: "https://drive.google.com/file/d/1Vpb7o5ujuCzPezfRWICpel5YV2a53cO2/view?usp=drivesdk",
+        href: docLink(
+          "data-centers-brochure",
+          "Data Centers — Brochure",
+          "https://drive.google.com/file/d/1D5ligiRnYy_jVDY6DSUU9Txja1iVaQrn/view?usp=sharing"
+        ),
       },
       {
         title: "Greenhouses & Grow Facilities – Brochure",
         blurb:
           "Captures spores and dust while preserving airflow—supporting yield and worker comfort.",
-        href: "https://drive.google.com/file/d/1L6Z5SYMTqh-w-vUJ0pjwXJeOfEI4dqbB/view?usp=share_link",
+        href: docLink(
+          "greenhouses-brochure",
+          "Greenhouses & Grow Facilities — Brochure",
+          "https://drive.google.com/file/d/13F_CG4D6Go7lxRFuMOtf_tkGDiSi8swj/view?usp=sharing"
+        ),
       },
       {
         title: "Hospitals – Brochure",
         blurb: "Pathogen control for patient safety and clinical performance.",
+        href: docLink(
+          "hospitals-brochure",
+          "Hospitals — Brochure",
+          "https://drive.google.com/file/d/1V32IdzwDA9uEyxpqGe72TSfzTWnNkBpj/view?usp=sharing"
+        ),
       },
       {
         title: "Commercial Buildings – Brochure",
         blurb: "ESG compliance and energy efficiency for modern portfolios.",
+        requestInfo: true,
       },
     ],
   },
@@ -81,10 +98,8 @@ const sections: Section[] = [
   },
 ];
 
-const makeViewerPath = (itemTitle: string, url: string) =>
-  `/docs/${slug(itemTitle)}?u=${encodeURIComponent(url)}&title=${encodeURIComponent(itemTitle)}`;
-
 export default function DownloadsPage() {
+  const { openModal } = useInfoRequest();
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       {/* Page hero */}
@@ -129,7 +144,7 @@ export default function DownloadsPage() {
                       <div className="mt-4">
                         {item.href ? (
                           <Link
-                            to={makeViewerPath(item.title, item.href)}
+                            to={item.href}
                             className={[
                               "inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground",
                               "hover:opacity-90",
@@ -137,6 +152,14 @@ export default function DownloadsPage() {
                           >
                             {linkLabel}
                           </Link>
+                        ) : item.requestInfo ? (
+                          <button
+                            type="button"
+                            onClick={openModal}
+                            className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-sm text-primary-foreground hover:opacity-90"
+                          >
+                            Request More Info
+                          </button>
                         ) : (
                           <button
                             disabled

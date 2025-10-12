@@ -1,5 +1,6 @@
 import React from 'react';
 import IndustryModal from './IndustryModal';
+import { docLink } from '@/lib/docLink';
 import { Cannabis, Zap, DollarSign, Building2, CheckCircle } from 'lucide-react';
 
 export default function GreenhousesModal(props) {
@@ -30,8 +31,12 @@ export default function GreenhousesModal(props) {
         'Post-harvest processing/packing',
         'Research growth chambers'
       ]}
-      downloadLink="https://drive.google.com/file/d/1L6Z5SYMTqh-w-vUJ0pjwXJeOfEI4dqbB/view?usp=sharing"
-      downloadTitle="Greenhouses & Grow Facilities – Brochure"
+      downloadLink={docLink(
+        'greenhouses-brochure',
+        'Greenhouses & Grow Facilities — Brochure',
+        'https://drive.google.com/file/d/13F_CG4D6Go7lxRFuMOtf_tkGDiSi8swj/view?usp=sharing'
+      )}
+      downloadTitle="Greenhouses & Grow Facilities — Brochure"
       {...props}
     />
   );
