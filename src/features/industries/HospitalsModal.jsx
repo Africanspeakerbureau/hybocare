@@ -1,5 +1,6 @@
 import React from 'react';
 import IndustryModal from './IndustryModal';
+import { docLink } from '@/lib/docLink';
 import { Heart, Shield, Volume2, Building2, CheckCircle } from 'lucide-react';
 
 export default function HospitalsModal(props) {
@@ -30,6 +31,12 @@ export default function HospitalsModal(props) {
         'Pharmacies & support areas',
         'Waiting areas and lobbies'
       ]}
+      downloadLink={docLink(
+        'hospitals-brochure',
+        'Hospitals — Brochure',
+        'https://drive.google.com/file/d/1V32IdzwDA9uEyxpqGe72TSfzTWnNkBpj/view?usp=sharing'
+      )}
+      downloadTitle="Hospitals — Brochure"
       {...props}
     />
   );

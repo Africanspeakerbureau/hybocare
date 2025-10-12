@@ -1,5 +1,6 @@
 import React from 'react';
 import IndustryModal from './IndustryModal';
+import { docLink } from '@/lib/docLink';
 import { Building2, Zap, DollarSign, Shield, Thermometer } from 'lucide-react';
 
 export default function DataCentersModal(props) {
@@ -30,8 +31,12 @@ export default function DataCentersModal(props) {
         'Cloud computing centers',
         'Edge computing locations'
       ]}
-      downloadLink="https://drive.google.com/file/d/1Vpb7o5ujuCzPezfRWICpel5YV2a53cO2/view?usp=sharing"
-      downloadTitle="Data Centers – Brochure"
+      downloadLink={docLink(
+        'data-centers-brochure',
+        'Data Centers — Brochure',
+        'https://drive.google.com/file/d/1D5ligiRnYy_jVDY6DSUU9Txja1iVaQrn/view?usp=sharing'
+      )}
+      downloadTitle="Data Centers — Brochure"
       {...props}
     />
   );
