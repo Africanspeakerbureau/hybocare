@@ -61,39 +61,39 @@ const sections: Section[] = [
   {
     heading: "Technical Specifications",
     items: [
-      { title: "HiboScreen – Data Centers: Technical Specs – Coming soon" },
-      { title: "HiboScreen – Greenhouses: Technical Specs – Coming soon" },
-      { title: "HiboScreen – Hospitals: Technical Specs – Coming soon" },
-      { title: "HiboScreen – Commercial Buildings: Technical Specs – Coming soon" },
+      { title: "HiboScreen – Data Centers: Technical Specs", requestInfo: true },
+      { title: "HiboScreen – Greenhouses: Technical Specs", requestInfo: true },
+      { title: "HiboScreen – Hospitals: Technical Specs", requestInfo: true },
+      { title: "HiboScreen – Commercial Buildings: Technical Specs", requestInfo: true },
     ],
   },
   {
     heading: "Installation & Integration",
     items: [
-      { title: "Retrofit Guide (Fan Walls & AHUs) – Coming soon" },
-      { title: "Sizing & Selection Notes – Coming soon" },
+      { title: "Retrofit Guide (Fan Walls & AHUs)", requestInfo: true },
+      { title: "Sizing & Selection Notes", requestInfo: true },
     ],
   },
   {
     heading: "Certifications & Compliance",
     items: [
-      { title: "CE, FCC, UKCA Certificates (bundle) – Coming soon" },
-      { title: "Material Safety & RoHS – Coming soon" },
+      { title: "CE, FCC, UKCA Certificates (bundle)", requestInfo: true },
+      { title: "Material Safety & RoHS", requestInfo: true },
     ],
   },
   {
     heading: "Case Studies & Results",
     items: [
-      { title: "Call Center Health & Absenteeism – Coming soon" },
-      { title: "Data Center Cooling Costs – Coming soon" },
-      { title: "Greenhouse Disease Pressure – Coming soon" },
+      { title: "Call Center Health & Absenteeism", requestInfo: true },
+      { title: "Data Center Cooling Costs", requestInfo: true },
+      { title: "Greenhouse Disease Pressure", requestInfo: true },
     ],
   },
   {
     heading: "Maintenance & Warranty",
     items: [
-      { title: "Maintenance Intervals & Cleaning – Coming soon" },
-      { title: "Warranty Statement – Coming soon" },
+      { title: "Maintenance Intervals & Cleaning", requestInfo: true },
+      { title: "Warranty Statement", requestInfo: true },
     ],
   },
 ];
@@ -107,7 +107,7 @@ export default function DownloadsPage() {
         <h1 className="text-4xl font-bold tracking-tight">Downloads</h1>
         <p className="mt-3 text-lg text-muted-foreground">
           Specs, brochures, and reference docs for HiboScreen. Choose a resource below.
-          Linked brochures open inside our on-site viewer with a download option; other items are coming soon.
+          Linked brochures open inside our on-site viewer with a download option; other items can be requested below.
         </p>
       </header>
 
