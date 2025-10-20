@@ -16,6 +16,7 @@ import GreenhousesModal from './features/industries/GreenhousesModal';
 import CommercialBuildingsModal from './features/industries/CommercialBuildingsModal';
 import { InfoRequestProvider, useInfoRequest } from "./features/info-request/InfoRequestContext";
 import InfoRequestModal from "./features/info-request/InfoRequestModal";
+import Logo from "./components/Logo";
 import {
   Wind,
   DollarSign,
@@ -33,11 +34,13 @@ import {
   Phone,
   Mail,
   MapPin,
-  User
+  User,
+  Linkedin,
+  Youtube,
+  Globe
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
-import logo from './assets/hiboair-logo.svg';
 
 function HeroCTA() {
   const { openModal } = useInfoRequest();
@@ -497,102 +500,219 @@ function Header() {
   const location = useLocation();
   const { openModal } = useInfoRequest();
 
+  const navLinks = [
+    { to: '/features', label: 'Features' },
+    { to: '/benefits', label: 'Benefits' },
+    { to: '/technology', label: 'Technology' },
+    { to: '/downloads', label: 'Downloads' },
+  ];
+
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center" aria-label="HiBoAir home">
-          <img src={logo} alt="HiBoAir" className="h-10 w-auto" />
-        </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link
-            to="/features"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/features' ? 'text-primary' : ''
-            }`}
-          >
-            Features
+    <header className="sticky top-0 z-50 shadow-sm">
+      <div className="bg-gradient-to-r from-sky-900 via-blue-800 to-blue-600 text-blue-100">
+        <div className="container flex flex-col gap-2 py-2 text-[0.7rem] sm:flex-row sm:items-center sm:justify-between sm:text-xs">
+          <p className="flex items-center gap-2 font-semibold uppercase tracking-[0.2em] text-white">
+            <Wind className="h-3.5 w-3.5 text-blue-100" />
+            Indoor Air Innovation
+          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+            <a
+              href="tel:+18053000966"
+              className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              +1 (805) 300-0966
+            </a>
+            <span className="hidden h-3 w-px bg-white/30 sm:block" aria-hidden="true" />
+            <a
+              href="mailto:info@hiboair.com"
+              className="flex items-center gap-1.5 text-white/80 transition-colors hover:text-white"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              info@hiboair.com
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="container flex h-20 items-center justify-between gap-6">
+          <Link to="/" className="flex items-center" aria-label="HiBoAir home">
+            <Logo showTagline={false} />
           </Link>
-          <Link 
-            to="/benefits" 
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/benefits' ? 'text-primary' : ''
-            }`}
-          >
-            Benefits
-          </Link>
-          <Link
-            to="/technology"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/technology' ? 'text-primary' : ''
-            }`}
-          >
-            Technology
-          </Link>
-          <Link
-            to="/downloads"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/downloads' ? 'text-primary' : ''
-            }`}
-          >
-            Downloads
-          </Link>
-          <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-        </nav>
-        <button
-          onClick={openModal}
-          className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-        >
-          Request More Info
-        </button>
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`text-sm font-semibold transition-colors ${
+                  isActive(link.to) ? 'text-blue-700' : 'text-slate-600 hover:text-blue-700'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a href="#contact" className="text-sm font-semibold text-slate-600 transition-colors hover:text-blue-700">
+              Contact
+            </a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/downloads#specs"
+              className="hidden text-sm font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-900 md:inline-flex"
+            >
+              Product Specs
+            </Link>
+            <Button
+              size="lg"
+              className="bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700"
+              onClick={openModal}
+            >
+              Talk to an Expert
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
     </header>
   );
 }
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
+  const solutionLinks = [
+    { label: 'HiboScreen H-Series', href: '#' },
+    { label: 'HiboScreen V10', href: '#' },
+    { label: 'Enterprise Monitoring', href: '#' },
+  ];
+  const resourceLinks = [
+    { label: 'Installation Guides', href: '#' },
+    { label: 'Maintenance & Service', href: '#' },
+    { label: 'Certifications', href: '#' },
+  ];
+  const companyLinks = [
+    { label: 'About HiBoAir', href: '#' },
+    { label: 'Case Studies', href: '#' },
+    { label: 'Partners', href: '#' },
+  ];
+
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="HiBoAir" className="h-10 w-auto" />
-            </div>
-            <p className="text-gray-400 text-sm">
-              Clean Air, Green Buildings, Healthy Spaces
+    <footer className="bg-slate-950 text-slate-200">
+      <div className="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
+        <div className="container grid gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-[2fr_repeat(3,minmax(0,1fr))]">
+          <div className="space-y-6">
+            <Logo variant="dark" />
+            <p className="max-w-md text-sm text-slate-300">
+              HiBoAir engineers cleaner, healthier indoor environments with intelligent filtration that integrates seamlessly
+              with existing HVAC infrastructure.
             </p>
+            <div className="flex flex-col gap-3 text-sm text-slate-300">
+              <a href="tel:+18053000966" className="flex items-center gap-2 transition-colors hover:text-white">
+                <Phone className="h-4 w-4" />
+                +1 (805) 300-0966
+              </a>
+              <a href="mailto:info@hiboair.com" className="flex items-center gap-2 transition-colors hover:text-white">
+                <Mail className="h-4 w-4" />
+                info@hiboair.com
+              </a>
+              <span className="flex items-center gap-2 text-slate-400">
+                <MapPin className="h-4 w-4" />
+                Global operations with regional partners
+              </span>
+            </div>
           </div>
-          
-          <div>
-            <h3 className="font-semibold mb-4">Products</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">HiboScreen H-Series</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">HiboScreen V10</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Custom Solutions</a></li>
+          <div className="space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">Solutions</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+              {solutionLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Installation Guide</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Maintenance</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Technical Support</a></li>
+          <div className="space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">Resources</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+              {resourceLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Certifications</a></li>
+          <div className="space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">Company</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
+            <div className="pt-4">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">Connect</h4>
+              <p className="mt-3 text-sm text-slate-300">Follow our progress and product announcements.</p>
+              <div className="mt-4 flex gap-3">
+                <a
+                  href="https://www.linkedin.com/company/hiboair"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                  aria-label="HiBoAir on LinkedIn"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                  aria-label="HiBoAir on YouTube"
+                >
+                  <Youtube className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.hiboair.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                  aria-label="Visit HiBoAir website"
+                >
+                  <Globe className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2025 HiboScreen. All rights reserved.</p>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="container flex flex-col gap-4 px-4 py-6 text-xs text-slate-400 md:flex-row md:items-center md:justify-between">
+          <p>© {currentYear} HiBoAir. All rights reserved.</p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#privacy" className="transition-colors hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="#terms" className="transition-colors hover:text-white">
+              Terms of Service
+            </a>
+            <a href="#cookies" className="transition-colors hover:text-white">
+              Cookie Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>
