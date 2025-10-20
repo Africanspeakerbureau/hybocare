@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 100" role="img" aria-labelledby="title desc">
+  <title id="title">HiBoAir logo</title>
+  <desc id="desc">Stylized square icon with diagonal stripes and flowing air lines followed by the word HiBoAir in blue text.</desc>
+  <defs>
+    <linearGradient id="stripeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C4A78" />
+      <stop offset="100%" stop-color="#0B3E66" />
+    </linearGradient>
+  </defs>
+  <g fill="#0C4A78" stroke="#0C4A78" stroke-width="0">
+    <rect x="6" y="6" width="88" height="88" rx="14" ry="14" fill="none" stroke-width="8" />
+    <path d="M22 74 L47 22 L34 22 L9 74 Z" fill="url(#stripeGradient)" />
+    <path d="M42 74 L67 22 L54 22 L29 74 Z" fill="url(#stripeGradient)" />
+    <path d="M48 40 C54 32 66 32 72 40 C78 48 90 48 96 40" fill="none" stroke-width="6" stroke-linecap="round" />
+    <path d="M48 54 C54 46 66 46 72 54 C78 62 90 62 96 54" fill="none" stroke-width="6" stroke-linecap="round" />
+    <path d="M48 68 C54 60 66 60 72 68 C78 76 90 76 96 68" fill="none" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <g transform="translate(118 72)" fill="#0C4A78">
+    <path d="M0 -48 H10 V-10 H42 V-48 H52 V22 H42 V0 H10 V22 H0 Z" />
+    <path d="M64 -48 H74 V22 H64 Z" />
+    <path d="M88 -48 H98 V-4 Q103 -12 110 -12 Q121 -12 126 -4 T132 16 Q132 32 124 42 T102 52 Q92 52 88 48 Z M98 32 Q102 38 108 38 Q120 38 120 18 Q120 -2 108 -2 Q102 -2 98 4 Z" />
+    <path d="M146 -48 H156 V-2 Q161 -12 170 -12 Q176 -12 181 -9 T188 0 Q196 -12 206 -12 Q214 -12 220 -5 T226 14 V22 H216 V8 Q216 -8 206 -8 Q198 -8 192 4 V22 H182 V4 Q178 -8 168 -8 Q160 -8 156 4 V22 H146 Z" />
+  </g>
+</svg>

@@ -37,6 +37,7 @@ import {
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
+import logo from './assets/hiboair-logo.svg';
 
 function HeroCTA() {
   const { openModal } = useInfoRequest();
@@ -53,25 +54,25 @@ function HomePage() {
   const contacts = [
     {
       name: 'Leslie Smiedt',
-      email: 'lessmiedt@mac.com',
+      email: 'les@hiboair.com',
       phone: '+1 (805) 300 0966',
       tel: '+18053000966'
     },
     {
       name: 'Andy Herbst',
-      email: 'andyagave@yahoo.com',
+      email: 'andy@hiboair.com',
       phone: '+1 (209) 222-1122',
       tel: '+12092221122'
     },
     {
       name: 'Christian Herbst',
-      email: 'cherbst73@gmail.com',
+      email: 'christian@hiboair.com',
       phone: '+1 (209) 262-0289',
       tel: '+12092620289'
     },
     {
       name: 'Sean Herbst',
-      email: 'rongz.oner@gmail.com',
+      email: 'sean@hiboair.com',
       phone: '+1 (442) 822-5125',
       tel: '+14428225125'
     }
@@ -499,11 +500,8 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <Wind className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="text-xl font-bold text-primary">HiboScreen</span>
+        <Link to="/" className="flex items-center" aria-label="HiBoAir home">
+          <img src={logo} alt="HiBoAir" className="h-10 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           <Link
@@ -558,10 +556,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Wind className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">HiboScreen</span>
+              <img src={logo} alt="HiBoAir" className="h-10 w-auto" />
             </div>
             <p className="text-gray-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
