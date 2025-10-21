@@ -22,19 +22,50 @@ const palettes = {
   },
 };
 
-export default function Logo({ className, variant = "light", showTagline = true }) {
+const sizes = {
+  sm: {
+    icon: "h-10 w-10",
+    title: "text-lg",
+    tagline: "text-xs",
+    gap: "gap-2",
+  },
+  md: {
+    icon: "h-12 w-12",
+    title: "text-xl",
+    tagline: "text-sm",
+    gap: "gap-3",
+  },
+  lg: {
+    icon: "h-14 w-14",
+    title: "text-2xl",
+    tagline: "text-base",
+    gap: "gap-4",
+  },
+};
+
+export default function Logo({ className, variant = "light", showTagline = true, size = "md" }) {
   const palette = palettes[variant] ?? palettes.light;
+  const dimensions = sizes[size] ?? sizes.md;
 
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn("flex items-center", dimensions.gap, className)}>
       <span
         className={cn(
-          "flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ring-inset",
+          "flex items-center justify-center rounded-2xl ring-1 ring-inset",
+          dimensions.icon,
           palette.iconBg,
           palette.iconRing,
         )}
       >
-        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          className="h-3/4 w-3/4"
+        >
           <rect x="3" y="3" width="42" height="42" rx="11" fill={palette.accent} opacity={variant === "dark" ? 0.25 : 1} />
           <path
             d="M10 14.5C10 12.567 11.567 11 13.5 11H22.5C24.433 11 26 12.567 26 14.5V33.5C26 35.433 24.433 37 22.5 37H13.5C11.567 37 10 35.433 10 33.5V14.5Z"
@@ -59,9 +90,9 @@ export default function Logo({ className, variant = "light", showTagline = true 
         </svg>
       </span>
       <div className="leading-tight">
-        <span className={cn("block text-xl font-black tracking-tight", palette.title)}>HiBoAir</span>
+        <span className={cn("block font-black tracking-tight", dimensions.title, palette.title)}>HiBoAir</span>
         {showTagline && (
-          <span className={cn("text-sm font-medium", palette.tagline)}>Air Quality Intelligence</span>
+          <span className={cn("font-medium", dimensions.tagline, palette.tagline)}>Air Quality Intelligence</span>
         )}
       </div>
     </div>

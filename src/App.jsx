@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ScrollHandler from "@/components/ScrollHandler";
 import './App.css';
@@ -37,7 +37,9 @@ import {
   User,
   Linkedin,
   Youtube,
-  Globe
+  Globe,
+  Menu,
+  X
 } from 'lucide-react';
 import filterImage from './assets/hibocare_filter_creative.png';
 import productImage from './assets/productshotH600.png';
@@ -499,6 +501,7 @@ function HomePage() {
 function Header() {
   const location = useLocation();
   const { openModal } = useInfoRequest();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { to: '/features', label: 'Features' },
@@ -514,6 +517,10 @@ function Header() {
 
     return location.pathname.startsWith(path);
   };
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header className="sticky top-0 z-50 shadow-sm">
@@ -543,9 +550,9 @@ function Header() {
         </div>
       </div>
       <div className="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-        <div className="container flex h-20 items-center justify-between gap-6">
+        <div className="container flex h-20 items-center justify-between gap-4">
           <Link to="/" className="flex items-center" aria-label="HiBoAir home">
-            <Logo showTagline={false} />
+            <Logo showTagline={false} size="sm" />
           </Link>
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
@@ -563,7 +570,7 @@ function Header() {
               Contact
             </a>
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <Link
               to="/downloads#specs"
               className="hidden text-sm font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-900 md:inline-flex"
@@ -572,15 +579,67 @@ function Header() {
             </Link>
             <Button
               size="lg"
-              className="bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700"
+              className="hidden bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 md:inline-flex"
               onClick={openModal}
             >
               Talk to an Expert
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
+            <button
+              type="button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 text-blue-700 transition hover:bg-blue-50 md:hidden"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 md:hidden">
+          <nav className="container flex flex-col gap-4 py-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`text-base font-semibold transition-colors ${
+                  isActive(link.to) ? 'text-blue-700' : 'text-slate-600 hover:text-blue-700'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="#contact"
+              className="text-base font-semibold text-slate-600 transition-colors hover:text-blue-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <Link
+              to="/downloads#specs"
+              className="text-base font-semibold text-blue-700 underline-offset-4 hover:text-blue-900"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Product Specs
+            </Link>
+            <Button
+              size="lg"
+              className="bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700"
+              onClick={() => {
+                openModal();
+                setIsMenuOpen(false);
+              }}
+            >
+              Talk to an Expert
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
