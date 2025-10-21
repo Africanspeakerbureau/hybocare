@@ -1,24 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 100" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-labelledby="title desc">
   <title id="title">HiBoAir logo</title>
-  <desc id="desc">Stylized square icon with diagonal stripes and flowing air lines followed by the word HiBoAir in blue text.</desc>
+  <desc id="desc">Blue square icon with diagonal airflow stripes and flowing wave lines next to the HiBoAir logotype.</desc>
   <defs>
     <linearGradient id="stripeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0C4A78" />
-      <stop offset="100%" stop-color="#0B3E66" />
+      <stop offset="0%" stop-color="#154C78" />
+      <stop offset="100%" stop-color="#0E3A63" />
     </linearGradient>
   </defs>
-  <g fill="#0C4A78" stroke="#0C4A78" stroke-width="0">
-    <rect x="6" y="6" width="88" height="88" rx="14" ry="14" fill="none" stroke-width="8" />
-    <path d="M22 74 L47 22 L34 22 L9 74 Z" fill="url(#stripeGradient)" />
-    <path d="M42 74 L67 22 L54 22 L29 74 Z" fill="url(#stripeGradient)" />
-    <path d="M48 40 C54 32 66 32 72 40 C78 48 90 48 96 40" fill="none" stroke-width="6" stroke-linecap="round" />
-    <path d="M48 54 C54 46 66 46 72 54 C78 62 90 62 96 54" fill="none" stroke-width="6" stroke-linecap="round" />
-    <path d="M48 68 C54 60 66 60 72 68 C78 76 90 76 96 68" fill="none" stroke-width="6" stroke-linecap="round" />
+  <g transform="translate(12 12)" stroke="#0E3A63" stroke-width="10" stroke-linejoin="round">
+    <rect x="0" y="0" width="96" height="96" rx="18" ry="18" fill="none" />
+    <g stroke-width="0">
+      <path d="M18 78 L44 18 H28 L2 78 Z" fill="url(#stripeGradient)" />
+      <path d="M44 78 L70 18 H54 L28 78 Z" fill="url(#stripeGradient)" />
+      <path d="M56 44 C64 32 82 32 90 44" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
+      <path d="M56 62 C64 50 82 50 90 62" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
+      <path d="M56 80 C64 68 82 68 90 80" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
+    </g>
   </g>
-  <g transform="translate(118 72)" fill="#0C4A78">
-    <path d="M0 -48 H10 V-10 H42 V-48 H52 V22 H42 V0 H10 V22 H0 Z" />
-    <path d="M64 -48 H74 V22 H64 Z" />
-    <path d="M88 -48 H98 V-4 Q103 -12 110 -12 Q121 -12 126 -4 T132 16 Q132 32 124 42 T102 52 Q92 52 88 48 Z M98 32 Q102 38 108 38 Q120 38 120 18 Q120 -2 108 -2 Q102 -2 98 4 Z" />
-    <path d="M146 -48 H156 V-2 Q161 -12 170 -12 Q176 -12 181 -9 T188 0 Q196 -12 206 -12 Q214 -12 220 -5 T226 14 V22 H216 V8 Q216 -8 206 -8 Q198 -8 192 4 V22 H182 V4 Q178 -8 168 -8 Q160 -8 156 4 V22 H146 Z" />
+  <g transform="translate(140 86)" fill="#0E3A63">
+    <path d="M0 -54 H14 V-12 H58 V-54 H72 V32 H58 V0 H14 V32 H0 Z" />
+    <path d="M96 -54 H110 V32 H96 Z" />
+    <path d="M134 -54 H148 V-6 Q156 -18 170 -18 Q182 -18 190 -8 T198 20 Q198 40 186 52 T154 64 Q140 64 134 58 Z M148 40 Q154 48 166 48 Q176 48 182 40 T188 18 Q188 -2 178 -2 Q166 -2 158 12 V32 H148 Z" />
+    <path d="M220 -54 H234 V-8 Q242 -20 258 -20 Q266 -20 272 -16 T282 -4 Q292 -20 308 -20 Q316 -20 322 -12 T328 12 V32 H314 V8 Q314 -12 300 -12 Q290 -12 282 4 V32 H268 V4 Q262 -12 248 -12 Q236 -12 234 4 V32 H220 Z" />
   </g>
 </svg>
