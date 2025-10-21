@@ -5,6 +5,7 @@ import './App.css';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
+import hiboAirLogo from './assets/hiboair-logo.svg';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
@@ -498,42 +499,48 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link
-            to="/features"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/features' ? 'text-primary' : ''
-            }`}
-          >
-            Features
+      <div className="container flex h-16 items-center justify-between gap-4">
+        <div className="flex items-center gap-6">
+          <Link to="/" className="inline-flex items-center">
+            <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
+            <span className="sr-only">HiBoAir home</span>
           </Link>
-          <Link
-            to="/benefits"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/benefits' ? 'text-primary' : ''
-            }`}
-          >
-            Benefits
-          </Link>
-          <Link
-            to="/technology"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/technology' ? 'text-primary' : ''
-            }`}
-          >
-            Technology
-          </Link>
-          <Link
-            to="/downloads"
-            className={`text-sm font-medium hover:text-primary transition-colors ${
-              location.pathname === '/downloads' ? 'text-primary' : ''
-            }`}
-          >
-            Downloads
-          </Link>
-          <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
-        </nav>
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              to="/features"
+              className={`text-sm font-medium hover:text-primary transition-colors ${
+                location.pathname === '/features' ? 'text-primary' : ''
+              }`}
+            >
+              Features
+            </Link>
+            <Link
+              to="/benefits"
+              className={`text-sm font-medium hover:text-primary transition-colors ${
+                location.pathname === '/benefits' ? 'text-primary' : ''
+              }`}
+            >
+              Benefits
+            </Link>
+            <Link
+              to="/technology"
+              className={`text-sm font-medium hover:text-primary transition-colors ${
+                location.pathname === '/technology' ? 'text-primary' : ''
+              }`}
+            >
+              Technology
+            </Link>
+            <Link
+              to="/downloads"
+              className={`text-sm font-medium hover:text-primary transition-colors ${
+                location.pathname === '/downloads' ? 'text-primary' : ''
+              }`}
+            >
+              Downloads
+            </Link>
+            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+          </nav>
+        </div>
         <button
           onClick={openModal}
           className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
@@ -551,6 +558,10 @@ function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
+            <Link to="/" className="inline-flex items-center">
+              <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
+              <span className="sr-only">HiBoAir home</span>
+            </Link>
             <p className="text-gray-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
             </p>

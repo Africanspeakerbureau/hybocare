@@ -1,26 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-labelledby="title desc">
-  <title id="title">HiBoAir logo</title>
-  <desc id="desc">Blue square icon with diagonal airflow stripes and flowing wave lines next to the HiBoAir logotype.</desc>
-  <defs>
-    <linearGradient id="stripeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#154C78" />
-      <stop offset="100%" stop-color="#0E3A63" />
-    </linearGradient>
-  </defs>
-  <g transform="translate(12 12)" stroke="#0E3A63" stroke-width="10" stroke-linejoin="round">
-    <rect x="0" y="0" width="96" height="96" rx="18" ry="18" fill="none" />
-    <g stroke-width="0">
-      <path d="M18 78 L44 18 H28 L2 78 Z" fill="url(#stripeGradient)" />
-      <path d="M44 78 L70 18 H54 L28 78 Z" fill="url(#stripeGradient)" />
-      <path d="M56 44 C64 32 82 32 90 44" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
-      <path d="M56 62 C64 50 82 50 90 62" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
-      <path d="M56 80 C64 68 82 68 90 80" fill="none" stroke="#0E3A63" stroke-width="8" stroke-linecap="round" />
-    </g>
-  </g>
-  <g transform="translate(140 86)" fill="#0E3A63">
-    <path d="M0 -54 H14 V-12 H58 V-54 H72 V32 H58 V0 H14 V32 H0 Z" />
-    <path d="M96 -54 H110 V32 H96 Z" />
-    <path d="M134 -54 H148 V-6 Q156 -18 170 -18 Q182 -18 190 -8 T198 20 Q198 40 186 52 T154 64 Q140 64 134 58 Z M148 40 Q154 48 166 48 Q176 48 182 40 T188 18 Q188 -2 178 -2 Q166 -2 158 12 V32 H148 Z" />
-    <path d="M220 -54 H234 V-8 Q242 -20 258 -20 Q266 -20 272 -16 T282 -4 Q292 -20 308 -20 Q316 -20 322 -12 T328 12 V32 H314 V8 Q314 -12 300 -12 Q290 -12 282 4 V32 H268 V4 Q262 -12 248 -12 Q236 -12 234 4 V32 H220 Z" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-labelledby="hiboairTitle hiboairDesc">
+  <title id="hiboairTitle">HiBoAir logo</title>
+  <desc id="hiboairDesc">A navy blue square icon with airflow stripes beside the HiBoAir wordmark.</desc>
+  <g fill="none" fill-rule="evenodd">
+    <rect x="6" y="6" width="68" height="68" rx="14" stroke="#0B3E6A" stroke-width="6" />
+    <path d="M20 62L38 22h-8L12 62z" fill="#0B3E6A" />
+    <path d="M38 62L56 22h-8L30 62z" fill="#0B3E6A" />
+    <path d="M44 40c6-8 20-8 26 0" stroke="#0B3E6A" stroke-width="5" stroke-linecap="round" />
+    <path d="M44 54c6-8 20-8 26 0" stroke="#0B3E6A" stroke-width="5" stroke-linecap="round" />
+    <path d="M44 68c6-8 20-8 26 0" stroke="#0B3E6A" stroke-width="5" stroke-linecap="round" />
+    <text x="94" y="52" fill="#0B3E6A" font-family="'Montserrat','Helvetica Neue',Arial,sans-serif" font-size="38" font-weight="600">HiBoAir</text>
   </g>
 </svg>
