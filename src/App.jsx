@@ -502,8 +502,8 @@ function Header() {
       <div className="container flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-6">
           <Link to="/" className="inline-flex items-center">
-            <img src={hiboAirLogo} alt="HiBiAir" className="h-10 w-auto" />
-            <span className="sr-only">HiBiAir home</span>
+            <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
+            <span className="sr-only">HiBoAir home</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link
@@ -559,8 +559,8 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center">
-              <img src={hiboAirLogo} alt="HiBiAir" className="h-10 w-auto" />
-              <span className="sr-only">HiBiAir home</span>
+              <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
+              <span className="sr-only">HiBoAir home</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
