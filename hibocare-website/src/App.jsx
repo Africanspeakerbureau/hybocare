@@ -502,7 +502,7 @@ function Header() {
       <div className="container flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-6">
           <Link to="/" className="inline-flex items-center">
-            <img src={hybocareLogo} alt="Hybocare" className="h-10 w-auto" />
+            <img src={hybocareLogo} alt="Hybocare" className="h-16 w-auto" />
             <span className="sr-only">Hybocare home</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
@@ -559,7 +559,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center">
-              <img src={hybocareLogo} alt="Hybocare" className="h-10 w-auto" />
+              <img src={hybocareLogo} alt="Hybocare" className="h-16 w-auto" />
               <span className="sr-only">Hybocare home</span>
             </Link>
             <p className="text-gray-400 text-sm">
