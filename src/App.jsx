@@ -5,7 +5,6 @@ import './App.css';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
-import hiboAirLogo from './assets/hiboair-logo.svg';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
@@ -501,9 +500,13 @@ function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-6">
-          <Link to="/" className="inline-flex items-center">
-            <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
-            <span className="sr-only">HiBoAir home</span>
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            aria-label="HiBoAir Home"
+          >
+            <img src="/hiboair-icon-remote.svg" alt="HiBoAir" className="h-8 w-auto" />
+            <span className="font-semibold text-slate-900">HiBoAir</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link
@@ -554,48 +557,52 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-slate-950 text-slate-300 py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link to="/" className="inline-flex items-center">
-              <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
-              <span className="sr-only">HiBoAir home</span>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-3"
+              aria-label="HiBoAir Home"
+            >
+              <img src="/hiboair-icon-remote.svg" alt="HiBoAir" className="h-7 w-auto" />
+              <span className="text-slate-200">HiBoAir</span>
             </Link>
-            <p className="text-gray-400 text-sm">
+            <p className="text-slate-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Products</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">HiboScreen H-Series</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">HiboScreen V10</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Custom Solutions</a></li>
+            <h3 className="font-semibold text-slate-200 mb-4">Products</h3>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#" className="hover:text-slate-200 transition-colors">HiboScreen H-Series</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">HiboScreen V10</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Custom Solutions</a></li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Installation Guide</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Maintenance</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Technical Support</a></li>
+            <h3 className="font-semibold text-slate-200 mb-4">Support</h3>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Installation Guide</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Maintenance</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Technical Support</a></li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Certifications</a></li>
+            <h3 className="font-semibold text-slate-200 mb-4">Company</h3>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#" className="hover:text-slate-200 transition-colors">About Us</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Case Studies</a></li>
+              <li><a href="#" className="hover:text-slate-200 transition-colors">Certifications</a></li>
             </ul>
           </div>
         </div>
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+
+        <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-500">
           <p>&copy; 2025 HiboScreen. All rights reserved.</p>
         </div>
       </div>
