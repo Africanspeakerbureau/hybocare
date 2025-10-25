@@ -5,7 +5,6 @@ import './App.css';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
-import hiboAirLogo from './assets/hiboair-logo.svg';
 import Features from './components/Features';
 import Benefits from './components/Benefits';
 import Technology from './components/Technology';
@@ -501,9 +500,15 @@ function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-6">
-          <Link to="/" className="inline-flex items-center">
-            <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
-            <span className="sr-only">HiBoAir home</span>
+          <Link to="/" className="flex items-center gap-2" aria-label="HiBoAir Home">
+            <img
+              src="https://drive.google.com/uc?export=download&id=15aQnumSd-ez8iQiY9AkzsB4n2zKnFALm"
+              alt="HiBoAir"
+              className="h-8 w-auto"
+              loading="eager"
+              decoding="sync"
+            />
+            <span className="font-semibold text-slate-900">HiBoAir</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link
@@ -558,9 +563,13 @@ function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link to="/" className="inline-flex items-center">
-              <img src={hiboAirLogo} alt="HiBoAir" className="h-10 w-auto" />
-              <span className="sr-only">HiBoAir home</span>
+            <Link to="/" className="flex items-center gap-3" aria-label="HiBoAir Home">
+              <img
+                src="https://drive.google.com/uc?export=download&id=15aQnumSd-ez8iQiY9AkzsB4n2zKnFALm"
+                alt="HiBoAir"
+                className="h-7 w-auto"
+              />
+              <span className="text-slate-200">HiBoAir</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Clean Air, Green Buildings, Healthy Spaces
